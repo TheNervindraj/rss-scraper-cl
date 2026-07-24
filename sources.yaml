@@ -20,7 +20,7 @@ sources:
 
   - name: "MOIT (Ministry of Industry and Trade)"
     category: "Government"
-    list_url: "https://moit.gov.vn/tin-tuc/phat-trien-nang-luong"
+    list_url: "https://moit.gov.vn/en/news"
     link_pattern: 'moit\.gov\.vn/.*\.html$'
     max_articles: 10
     status: active
