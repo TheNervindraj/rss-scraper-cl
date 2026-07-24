@@ -1,0 +1,58 @@
+# ============================================================
+# SOURCES.YAML
+# ------------------------------------------------------------
+# One entry per website you want scraped. To add a new source,
+# copy a block below and adjust the values.
+#
+# Fields:
+#   name          - Display name for this source (shows in Dataverse/PowerAutomate)
+#   category      - Your category label (Government, Operators, etc.)
+#   list_url      - The page listing recent articles (usually the homepage
+#                    or a news/press-release section)
+#   link_pattern  - A regex. Only <a href> links matching this are treated
+#                    as articles (filters out nav menus, social links, etc.)
+#   max_articles  - How many of the newest matching links to pull per run
+#   status        - "active" (scrape it) or "needs_review" (skip — flagged
+#                    as unreliable to scrape simply, e.g. JS-rendered)
+# ============================================================
+
+sources:
+
+  - name: "MOIT (Ministry of Industry and Trade)"
+    category: "Government"
+    list_url: "https://moit.gov.vn/tin-tuc/phat-trien-nang-luong"
+    link_pattern: 'moit\.gov\.vn/.*\.html$'
+    max_articles: 10
+    status: active
+
+  - name: "Vietnam Energy Online"
+    category: "Vietnam news"
+    list_url: "https://vietnamenergy.vn/oil-and-gas"
+    link_pattern: 'vietnamenergy\.vn/[a-z0-9-]+-\d+\.html$'
+    max_articles: 10
+    status: active
+
+  - name: "Halliburton Newsroom"
+    category: "Competitors"
+    list_url: "https://www.halliburton.com/en/about-us/press-release"
+    link_pattern: 'halliburton\.com/en/about-us/press-release/[a-z0-9-]+'
+    max_articles: 10
+    status: needs_review   # filterable JS listing (Year/Content Type dropdowns) —
+                            # link discovery may return few/no results until
+                            # selectors are confirmed against a real run
+
+  - name: "Energy Voice - Oil & Gas"
+    category: "Industry intelligence"
+    list_url: "https://www.energyvoice.com/category/oilandgas/"
+    link_pattern: 'energyvoice\.com/oilandgas/[a-z0-9/-]+'
+    max_articles: 10
+    status: needs_review   # large paginated site, homepage listing structure
+                            # not yet confirmed against real HTML
+
+  - name: "PVN (Petrovietnam)"
+    category: "Operators"
+    list_url: "https://www.pvn.vn"
+    link_pattern: 'pvn\.vn/.*'
+    max_articles: 10
+    status: needs_review   # homepage appeared to serve stale/cached content —
+                            # likely JS-rendered, skipped per your instruction
