@@ -6,53 +6,130 @@
 #
 # Fields:
 #   name          - Display name for this source (shows in Dataverse/PowerAutomate)
+#   slug          - Short, filesystem-safe id. Used as the filename for this
+#                    source's feed, e.g. slug "moit" -> docs/rss-moit.xml
 #   category      - Your category label (Government, Operators, etc.)
 #   list_url      - The page listing recent articles (usually the homepage
 #                    or a news/press-release section)
 #   link_pattern  - A regex. Only <a href> links matching this are treated
 #                    as articles (filters out nav menus, social links, etc.)
-#   max_articles  - How many of the newest matching links to pull per run
-#   status        - "active" (scrape it) or "needs_review" (skip — flagged
-#                    as unreliable to scrape simply, e.g. JS-rendered)
+#   max_articles  - How many of the newest matching links to check per run
+#                    (final feed keeps only the 3 most recent after filtering)
+#   status        - "active" (scrape it) or "needs_review" (skip — either
+#                    unverified, or flagged as unreliable to scrape simply,
+#                    e.g. JS-rendered)
 # ============================================================
 
 sources:
 
-  - name: "MOIT (Ministry of Industry and Trade)"
-    category: "Government"
-    list_url: "https://moit.gov.vn/en/news"
-    link_pattern: 'moit\.gov\.vn/.*\.html$'
-    max_articles: 10
-    status: active
+  # --- Government ---
 
-  - name: "Vietnam Energy Online"
-    category: "Vietnam news"
-    list_url: "https://vietnamenergy.vn/oil-and-gas"
-    link_pattern: 'vietnamenergy\.vn/[a-z0-9-]+-\d+\.html$'
+  - name: "MOIT (Ministry of Industry and Trade)"
+    slug: "moit"
+    category: "Government"
+    list_url: "https://moit.gov.vn/en/news/latest-news"
+    link_pattern: 'moit\.gov\.vn/en/news/[a-z0-9-]+\.html$'
     max_articles: 10
-    status: active
+    status: active   # verified: static HTML, clean article links + dates
+
+  - name: "MOJ (Ministry of Justice)"
+    slug: "moj"
+    category: "Government"
+    list_url: "https://moj.gov.vn/portal-en/trang-chu.html"
+    link_pattern: 'moj\.gov\.vn/portal-en/tin-tuc/chi-tiet/[a-z0-9-]+\.html$'
+    max_articles: 10
+    status: active   # verified: static HTML, article links confirmed on homepage
+
+  # --- Operators ---
+
+  - name: "PVN (Petrovietnam)"
+    slug: "pvn"
+    category: "Operators"
+    list_url: "https://www.pvn.vn/en/news/961AC5A2-D990-469E-8262-EB79171AEB66"
+    link_pattern: 'pvn\.vn/en/news/[A-Za-z0-9-]+'
+    max_articles: 10
+    status: needs_review   # homepage previously returned stale/cached content
+                            # (dates from 2015-2016) — likely JS-rendered.
+                            # This is a different URL (news listing) than
+                            # before, may behave differently — worth a real
+                            # test run before trusting it
+
+  - name: "BSR (Binh Son Refining)"
+    slug: "bsr"
+    category: "Operators"
+    list_url: "https://bsr.com.vn/web/bsr-eng/new-events"
+    link_pattern: 'bsr\.com\.vn/web/bsr-eng/[a-z0-9-]+/-/[a-zA-Z0-9_/]+'
+    max_articles: 10
+    status: needs_review   # not yet inspected — likely a Liferay portal,
+                            # link_pattern is a guess based on common
+                            # Liferay URL structure
+
+  - name: "PVOIL"
+    slug: "pvoil"
+    category: "Operators"
+    list_url: "https://www.pvoil.com.vn/en/pvoil-news"
+    link_pattern: 'pvoil\.com\.vn/en/[a-z0-9-]+'
+    max_articles: 10
+    status: needs_review   # not yet inspected
+
+  # --- Competitors ---
 
   - name: "Halliburton Newsroom"
+    slug: "halliburton"
     category: "Competitors"
     list_url: "https://www.halliburton.com/en/about-us/press-release"
     link_pattern: 'halliburton\.com/en/about-us/press-release/[a-z0-9-]+'
     max_articles: 10
-    status: needs_review   # filterable JS listing (Year/Content Type dropdowns) —
-                            # link discovery may return few/no results until
-                            # selectors are confirmed against a real run
+    status: needs_review   # filterable JS listing (Year/Content Type
+                            # dropdowns) — link discovery may return
+                            # few/no results until confirmed on a real run
 
-  - name: "Energy Voice - Oil & Gas"
+  - name: "Oceaneering News Releases"
+    slug: "oceaneering"
+    category: "Competitors"
+    list_url: "https://www.oceaneering.com/category/news-releases/"
+    link_pattern: 'oceaneering\.com/\d{4}/\d{2}/[a-z0-9-]+/?$'
+    max_articles: 10
+    status: needs_review   # not yet inspected — pattern guesses a
+                            # WordPress-style /yyyy/mm/slug URL
+
+  # --- Industry intelligence ---
+
+  - name: "Offshore Energy"
+    slug: "offshore-energy"
     category: "Industry intelligence"
-    list_url: "https://www.energyvoice.com/category/oilandgas/"
-    link_pattern: 'energyvoice\.com/oilandgas/[a-z0-9/-]+'
+    list_url: "https://www.offshore-energy.biz/"
+    link_pattern: 'offshore-energy\.biz/[a-z0-9-]+/'
     max_articles: 10
-    status: needs_review   # large paginated site, homepage listing structure
-                            # not yet confirmed against real HTML
+    status: needs_review   # not yet inspected
 
-  - name: "PVN (Petrovietnam)"
-    category: "Operators"
-    list_url: "https://www.pvn.vn"
-    link_pattern: 'pvn\.vn/.*'
+  - name: "Reuters Business"
+    slug: "reuters"
+    category: "Industry intelligence"
+    list_url: "https://www.reuters.com/business/energy/"
+    link_pattern: 'reuters\.com/business/energy/[a-z0-9-]+-\d{4}-\d{2}-\d{2}/'
     max_articles: 10
-    status: needs_review   # homepage appeared to serve stale/cached content —
-                            # likely JS-rendered, skipped per your instruction
+    status: needs_review   # Reuters is known to aggressively block automated
+                            # requests (403s) — this will very likely need a
+                            # different approach (their own RSS, if any still
+                            # work, or a licensed news API) rather than direct
+                            # scraping. Treat as low-confidence.
+
+  # --- Vietnam news ---
+
+  - name: "Vietnam Energy Online"
+    slug: "vietnamenergy"
+    category: "Vietnam news"
+    list_url: "https://vietnamenergy.vn/oil-and-gas"
+    link_pattern: 'vietnamenergy\.vn/[a-z0-9-]+-\d+\.html$'
+    max_articles: 10
+    status: active   # verified: static HTML, clean article listings
+
+  - name: "Vietnam Investment Review - World News"
+    slug: "vir"
+    category: "Vietnam news"
+    list_url: "https://vir.com.vn/world-news"
+    link_pattern: 'vir\.com\.vn/[a-z0-9-]+-\d+\.html$'
+    max_articles: 10
+    status: needs_review   # not yet inspected — pattern guesses a common
+                            # Vietnamese-news-portal URL shape (slug-id.html)
