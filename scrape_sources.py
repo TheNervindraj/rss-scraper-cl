@@ -168,6 +168,7 @@ def scrape_source(source):
             "description": f"Source: {name} | Category: {source.get('category', '')}",
             "pub_date": pub_date,
             "source": name,
+            "slug": source.get("slug", re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")),
             "category": source.get("category", ""),
         })
         print(f"    - {title[:70]}{'...' if len(title) > 70 else ''}"
