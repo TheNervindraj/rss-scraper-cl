@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
 <rss version="2.0">
   <channel>
-    <title>Oil &amp; Gas Industry Watch</title>
-    <link>https://yourusername.github.io/your-repo-name/</link>
-    <description>Auto-scraped articles across government, operator, competitor, and industry-intelligence sources.</description>
+    <title>MOIT (Ministry of Industry and Trade) — Oil &amp; Gas Industry Watch</title>
+    <link>https://yourusername.github.io/your-repo-name/rss-moit.xml</link>
+    <description>Latest articles from MOIT (Ministry of Industry and Trade).</description>
     <language>en</language>
     <lastBuildDate>Tue, 28 Jul 2026 15:52:07 +0000</lastBuildDate>
     <item>

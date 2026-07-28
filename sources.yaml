@@ -48,7 +48,7 @@ sources:
     list_url: "https://www.pvn.vn/en/news/961AC5A2-D990-469E-8262-EB79171AEB66"
     link_pattern: 'pvn\.vn/en/news/[A-Za-z0-9-]+'
     max_articles: 10
-    status: needs_review   # homepage previously returned stale/cached content
+    status: active   # homepage previously returned stale/cached content
                             # (dates from 2015-2016) — likely JS-rendered.
                             # This is a different URL (news listing) than
                             # before, may behave differently — worth a real
@@ -60,7 +60,7 @@ sources:
     list_url: "https://bsr.com.vn/web/bsr-eng/new-events"
     link_pattern: 'bsr\.com\.vn/web/bsr-eng/[a-z0-9-]+/-/[a-zA-Z0-9_/]+'
     max_articles: 10
-    status: needs_review   # not yet inspected — likely a Liferay portal,
+    status: active   # not yet inspected — likely a Liferay portal,
                             # link_pattern is a guess based on common
                             # Liferay URL structure
 
@@ -70,7 +70,7 @@ sources:
     list_url: "https://www.pvoil.com.vn/en/pvoil-news"
     link_pattern: 'pvoil\.com\.vn/en/[a-z0-9-]+'
     max_articles: 10
-    status: needs_review   # not yet inspected
+    status: active   # not yet inspected
 
   # --- Competitors ---
 
@@ -80,7 +80,7 @@ sources:
     list_url: "https://www.halliburton.com/en/about-us/press-release"
     link_pattern: 'halliburton\.com/en/about-us/press-release/[a-z0-9-]+'
     max_articles: 10
-    status: needs_review   # filterable JS listing (Year/Content Type
+    status: active   # filterable JS listing (Year/Content Type
                             # dropdowns) — link discovery may return
                             # few/no results until confirmed on a real run
 
@@ -90,7 +90,7 @@ sources:
     list_url: "https://www.oceaneering.com/category/news-releases/"
     link_pattern: 'oceaneering\.com/\d{4}/\d{2}/[a-z0-9-]+/?$'
     max_articles: 10
-    status: needs_review   # not yet inspected — pattern guesses a
+    status: active   # not yet inspected — pattern guesses a
                             # WordPress-style /yyyy/mm/slug URL
 
   # --- Industry intelligence ---
@@ -101,7 +101,7 @@ sources:
     list_url: "https://www.offshore-energy.biz/"
     link_pattern: 'offshore-energy\.biz/[a-z0-9-]+/'
     max_articles: 10
-    status: needs_review   # not yet inspected
+    status: active   # not yet inspected
 
   - name: "Reuters Business"
     slug: "reuters"
@@ -109,7 +109,7 @@ sources:
     list_url: "https://www.reuters.com/business/energy/"
     link_pattern: 'reuters\.com/business/energy/[a-z0-9-]+-\d{4}-\d{2}-\d{2}/'
     max_articles: 10
-    status: needs_review   # Reuters is known to aggressively block automated
+    status: active   # Reuters is known to aggressively block automated
                             # requests (403s) — this will very likely need a
                             # different approach (their own RSS, if any still
                             # work, or a licensed news API) rather than direct
