@@ -109,7 +109,7 @@ sources:
     list_url: "https://www.reuters.com/business/energy/"
     link_pattern: 'reuters\.com/business/energy/[a-z0-9-]+-\d{4}-\d{2}-\d{2}/'
     max_articles: 10
-    status: active   # Reuters is known to aggressively block automated
+    status: needs_review   # Reuters is known to aggressively block automated
                             # requests (403s) — this will very likely need a
                             # different approach (their own RSS, if any still
                             # work, or a licensed news API) rather than direct
