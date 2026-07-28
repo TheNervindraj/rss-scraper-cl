@@ -35,7 +35,7 @@ HEADERS = {
 REQUEST_TIMEOUT = 20
 DELAY_BETWEEN_REQUESTS = 1.5  # be polite to source servers
 MAX_ARTICLE_AGE_DAYS = 90     # skip anything older than ~3 months
-TOP_N_PER_SOURCE = 3          # keep only the N most recent per source
+TOP_N_PER_SOURCE = 5          # keep only the N most recent per source
 
 # Vietnamese weekday-date pattern, e.g. "Thứ 4, 22/07/2026"
 VN_DATE_RE = re.compile(r"(\d{1,2})/(\d{1,2})/(\d{4})")
