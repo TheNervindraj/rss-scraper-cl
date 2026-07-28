@@ -56,6 +56,14 @@ sources:
     max_articles: 10
     status: needs_review   # The specific article URL structure needs confirmation on a live run  
 
+  - name: "Malaysia Energy Statistics (MyEnergyStats)"
+    slug: "myenergystats"
+    category: "Government"
+    list_url: "https://myenergystats.st.gov.my/news-resources"
+    link_pattern: 'myenergystats\.st\.gov\.my/(?:news-resources|article|news)/[a-zA-Z0-9-]+'
+    max_articles: 10
+    status: needs_review  
+
   - name: "Suruhanjaya Tenaga (Energy Commission)"
     slug: "st"
     category: "Government"
@@ -163,7 +171,7 @@ sources:
     list_url: "https://vietnamenergy.vn/oil-and-gas"
     link_pattern: 'vietnamenergy\.vn/[a-z0-9-]+-\d+\.html$'
     max_articles: 10
-    status: active   # verified: static HTML, clean article listings
+    status: needs_review   # verified: static HTML, clean article listings
 
   - name: "Vietnam Investment Review - World News"
     slug: "vir"
@@ -175,14 +183,14 @@ sources:
                             # Vietnamese-news-portal URL shape (slug-id.html)
                             
   # --- Malaysia news ---
-  
-  - name: "The Edge Malaysia"
-    slug: "theedgemalaysia"
+
+  - name: "The Edge Malaysia (Economy)"
+    slug: "theedge-economy"
     category: "Malaysia news"
-    list_url: "https://theedgemalaysia.com/video-feeds/news"
+    list_url: "https://theedgemalaysia.com/categories/economy"
     link_pattern: 'theedgemalaysia\.com/(?:node|article)/[a-zA-Z0-9-]+'
     max_articles: 10
-    status: needs_review   # Needs testing to confirm if the video-feed hub exposes standard article nodes via plain HTML
+    status: active
 
   - name: "Bernama Business"
     slug: "bernama"
@@ -191,3 +199,19 @@ sources:
     link_pattern: 'bernama\.com/en/(?:business|news)\.php\?id=\d+'
     max_articles: 10
     status: needs_review   # Uses straightforward PHP GET query IDs for articles
+
+  - name: "Free Malaysia Today (FMT) - Oil & Gas"
+    slug: "fmt-oilgas"
+    category: "Malaysia news"
+    list_url: "https://www.freemalaysiatoday.com/category/tag/oil-and-gas"
+    link_pattern: 'freemalaysiatoday\.com/category/[a-zA-Z0-9-]+/\d{4}/\d{2}/\d{2}/[a-zA-Z0-9-]+/?$'
+    max_articles: 10
+    status: active   # Standard WordPress news site mapping (/category/.../YYYY/MM/DD/slug)
+
+  - name: "The Star - Energy"
+    slug: "thestar-energy"
+    category: "Malaysia news"
+    list_url: "https://www.thestar.com.my/tag/energy"
+    link_pattern: 'thestar\.com\.my/[a-zA-Z0-9-]+(?:/[a-zA-Z0-9-]+)?/\d{4}/\d{2}/\d{2}/[a-zA-Z0-9-]+'
+    max_articles: 10
+    status: active  

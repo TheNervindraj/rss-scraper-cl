@@ -5,7 +5,7 @@
     <link>https://yourusername.github.io/your-repo-name/rss-moit.xml</link>
     <description>Latest articles from MOIT (Ministry of Industry and Trade).</description>
     <language>en</language>
-    <lastBuildDate>Tue, 28 Jul 2026 16:26:03 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 16:51:56 +0000</lastBuildDate>
     <item>
       <title>Vietnam Trade Office promotes Vietnamese coffee at Expo Café Chile 2026</title>
       <link>https://moit.gov.vn/en/news/vietnam-trade-office-promotes-vietnamese-coffee-at-expo-cafe-chile-2026.html</link>
@@ -29,6 +29,22 @@
       <category>Government</category>
       <guid isPermaLink="true">https://moit.gov.vn/en/news/ministry-of-industry-and-trade-brings-northwest-specialties-closer-to-consumers-in-hanoi.html</guid>
       <pubDate>Fri, 17 Jul 2026 11:15:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Vietnam - Laos Trade Fair 2026 (VIETLAO EXPO 2026) officially opens</title>
+      <link>https://moit.gov.vn/en/news/vietnam-laos-trade-fair-2026-vietlao-expo-2026-officially-opens.html</link>
+      <description>Source: MOIT (Ministry of Industry and Trade) | Category: Government</description>
+      <category>Government</category>
+      <guid isPermaLink="true">https://moit.gov.vn/en/news/vietnam-laos-trade-fair-2026-vietlao-expo-2026-officially-opens.html</guid>
+      <pubDate>Fri, 17 Jul 2026 10:34:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ministry of Industry and Trade holds thematic meeting on legislative development and key tasks for the third quarter</title>
+      <link>https://moit.gov.vn/en/news/ministry-of-industry-and-trade-holds-thematic-meeting-on-legislative-development-and-key-tasks-for-the-third-quarter.html</link>
+      <description>Source: MOIT (Ministry of Industry and Trade) | Category: Government</description>
+      <category>Government</category>
+      <guid isPermaLink="true">https://moit.gov.vn/en/news/ministry-of-industry-and-trade-holds-thematic-meeting-on-legislative-development-and-key-tasks-for-the-third-quarter.html</guid>
+      <pubDate>Fri, 10 Jul 2026 16:08:11 +0000</pubDate>
     </item>
   </channel>
 </rss>
